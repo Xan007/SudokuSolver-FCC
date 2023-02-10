@@ -29,7 +29,7 @@ module.exports = function (app) {
       }
 
       const row = RowTranslator.indexOf(matchCoordinate[1])
-      const column = Number(matchCoordinate[2])
+      const column = Number(matchCoordinate[2]) - 1
       value = Number(value)
 
       try {
@@ -39,6 +39,7 @@ module.exports = function (app) {
       }
 
       const puzzleArray = solver.getPuzzleArray(puzzle)
+
       const [result, problems] = solver.possible(puzzleArray, row, column, value)
 
       if (!result)
