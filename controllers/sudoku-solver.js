@@ -40,11 +40,11 @@ class SudokuSolver {
   }
 
   checkCoordinate(row, column, value) {
-    if (!(0 <= row < 9)) throw "Invalid coordinate";
+    if (row < 0 || row > 9) throw "Invalid coordinate";
 
-    if (!(0 <= column < 9)) throw "Invalid coordinate";
+    if (column < 0 || column > 9) throw "Invalid coordinate";
 
-    if (!(1 <= value <= 9)) throw "Invalid value";
+    if (value < 1 || value > 9) throw "Invalid value";
 
     return true;
   }

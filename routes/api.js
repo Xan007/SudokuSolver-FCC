@@ -1,7 +1,7 @@
 'use strict';
 
 const SudokuSolver = require('../controllers/sudoku-solver.js');
-const CoordinateFormat = /([A-I])([1-9])/
+const CoordinateFormat = /^([A-I])([1-9])$/
 
 const RowTranslator = ["A", "B", "C", "D", "E", "F", "G", "H", "I"]
 
@@ -31,6 +31,9 @@ module.exports = function (app) {
       const row = RowTranslator.indexOf(matchCoordinate[1])
       const column = Number(matchCoordinate[2]) - 1
       value = Number(value)
+
+      if (!value)
+        return res.send({ error: "Invalid value" })
 
       try {
         solver.checkCoordinate(row, column, value)
